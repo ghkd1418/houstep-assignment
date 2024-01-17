@@ -7,10 +7,12 @@ interface LinkButtonProps extends React.LinkHTMLAttributes<HTMLAnchorElement> {
   replace?: boolean
 }
 
-export function LinkButton({ href, children, ...props }: LinkButtonProps) {
+function LinkButton({ href, children, ...props }: LinkButtonProps) {
   return (
     <Link href={href} {...props}>
       {children}
     </Link>
   )
 }
+
+export default LinkButton
