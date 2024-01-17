@@ -1,14 +1,14 @@
 import styled from '@emotion/styled'
 
-interface Props {
+interface SpacingProps {
   size: number
 }
 
-function Spacing({ size }: Props) {
+function Spacing({ size }: SpacingProps) {
   return <StyledSpacing size={size} />
 }
 
-const StyledSpacing = styled.div<Props>`
+const StyledSpacing = styled.div<SpacingProps>`
   width: ${(props) => props.size}px;
   height: ${(props) => props.size}px;
 `
