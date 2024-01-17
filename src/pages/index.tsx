@@ -12,7 +12,7 @@ export default function Home() {
       <CustomHead title={'홈'} />
       <Container>
         <Image src={largeLogo} alt={'로고'} />
-        <Spacing size={40} />
+        <Spacing size={41} />
         <StyledLinkButton href='/order'>주문하러 가기</StyledLinkButton>
       </Container>
     </>
