@@ -32,11 +32,5 @@ const StyledLinkButton = styled(LinkButton)`
   width: 172px;
   height: 88px;
   border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: ${colors.white};
-  &:hover {
-    opacity: 0.9;
-  }
 `
