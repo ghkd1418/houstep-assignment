@@ -5,11 +5,7 @@ interface DefaultLayoutProps {
 }
 
 function DefaultLayout({ children }: DefaultLayoutProps) {
-  return (
-    <Wrapper className='mx-auto max-w-[375px] px-[28px] py-[22px]'>
-      {children}
-    </Wrapper>
-  )
+  return <Wrapper>{children}</Wrapper>
 }
 
 const Wrapper = styled.div`
