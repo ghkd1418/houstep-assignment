@@ -1,36 +1,50 @@
 import Image from 'next/image'
-import largeLogo from '/public/icons/logo-black-large.svg'
 import styled from '@emotion/styled'
 import { colors } from '@/styles/colors'
 import CustomHead from '@/components/common/CustomHead'
-import LinkButton from '@/components/common/LinkButton'
 import Spacing from '@/layouts/Spacing'
+import Link from 'next/link'
 
 export default function Home() {
   return (
     <>
       <CustomHead title={'홈'} />
       <Container>
-        <Image src={largeLogo} alt={'로고'} />
+        <Image
+          src={'/icons/logo-black-large.svg'}
+          alt={'로고'}
+          width={151}
+          height={51}
+          priority
+        />
         <Spacing size={41} />
-        <StyledLinkButton href='/order'>주문하러 가기</StyledLinkButton>
+        <StyledLink href='/order'>주문하러 가기</StyledLink>
       </Container>
     </>
   )
 }
 
 const Container = styled.main`
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  height: 100vh;
   flex-direction: column;
   background-color: ${colors.black};
 `
 
-const StyledLinkButton = styled(LinkButton)`
+const StyledLink = styled(Link)`
   width: 172px;
   height: 88px;
   border-radius: 20px;
   background-color: ${colors.white};
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    opacity: 0.9;
+  }
 `
