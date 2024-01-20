@@ -12,7 +12,6 @@ import { useGetItems } from '@/hooks/fetch/useFetchItems'
 
 function Order() {
   const { data: items, isLoading, isError, refetch } = useGetItems()
-
   const { getTotalQuantities, getTotalPrices } = orderStore
 
   return (
@@ -20,6 +19,25 @@ function Order() {
       <CustomHead title={'주문하기'} />
       <Header />
       <Container>
+        {isLoading && (
+          <Loading>
+            목록을
+            <br />
+            불러오고 있습니다.
+          </Loading>
+        )}
+        {isError && (
+          <Error>
+            <p>
+              문제가
+              <br />
+              발생하였습니다.
+            </p>
+            <RefetchButton onClick={() => refetch()}>
+              다시 시도하기
+            </RefetchButton>
+          </Error>
+        )}
         <Items>
           {items?.map((item) => <Item key={item.id} item={item} />)}
         </Items>
@@ -29,7 +47,7 @@ function Order() {
             <Spacing size={5} />
             <p>총 가격 : {formatNumberWithCommas(getTotalPrices())}개</p>
           </Total>
-          <OrderButton disabled={getTotalQuantities() === 0}>
+          <OrderButton disabled={getTotalQuantities() === 0 || isLoading}>
             주문하기
           </OrderButton>
         </Cart>
@@ -75,6 +93,24 @@ const OrderButton = styled.button`
   &:hover {
     opacity: 0.9;
   }
+`
+
+const Loading = styled.p`
+  text-align: center;
+  margin: auto auto;
+  font-size: 18px;
+`
+
+const Error = styled.p`
+  text-align: center;
+  margin: auto auto;
+  font-size: 18px;
+`
+
+const RefetchButton = styled.button`
+  width: 301px;
+  height: 48px;
+  margin: 20px auto 0 auto;
 `
 
 export default observer(Order)
