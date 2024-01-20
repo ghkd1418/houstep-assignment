@@ -30,7 +30,6 @@ const orderStore: OrderStoreType = makeAutoObservable({
   },
 
   getItemQuantity(productId: string) {
-    console.log(orderStore.orders)
     const productOnOrder = orderStore.orders.find(
       (item) => item.id === productId
     )

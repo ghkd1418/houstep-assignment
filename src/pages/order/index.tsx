@@ -3,27 +3,17 @@ import { colors } from '@/styles/colors'
 import CustomHead from '@/components/common/CustomHead'
 import Header from '@/components/common/Header'
 import BottomDrawer from '@/components/common/BottomDrawer'
-import { useEffect, useState } from 'react'
-import { getItems } from '@/apis/product'
 import Item from '@/components/pages/order/Item'
-import { ItemType } from '@/types/item'
 import orderStore from '@/stores/orderStore'
 import { observer } from 'mobx-react'
 import { formatNumberWithCommas } from '@/utils/addCommasToNumber'
 import Spacing from '@/layouts/Spacing'
+import { useGetItems } from '@/hooks/fetch/useFetchItems'
 
 function Order() {
-  const [items, setItems] = useState<ItemType[]>([])
-  const { getTotalQuantities, getTotalPrices } = orderStore
+  const { data: items, isLoading, isError, refetch } = useGetItems()
 
-  useEffect(() => {
-    const fetchItems = async () => {
-      const { data } = await getItems()
-      console.log(data)
-      setItems(data)
-    }
-    fetchItems()
-  }, [])
+  const { getTotalQuantities, getTotalPrices } = orderStore
 
   return (
     <>
@@ -31,9 +21,7 @@ function Order() {
       <Header />
       <Container>
         <Items>
-          {items.map((item) => (
-            <Item key={item.id} item={item} />
-          ))}
+          {items?.map((item) => <Item key={item.id} item={item} />)}
         </Items>
         <Cart>
           <Total>

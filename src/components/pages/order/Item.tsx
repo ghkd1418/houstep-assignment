@@ -1,10 +1,10 @@
 import orderStore from '@/stores/orderStore'
 import { colors } from '@/styles/colors'
-import { ItemType } from '@/types/item'
 import { formatNumberWithCommas } from '@/utils/addCommasToNumber'
 import styled from '@emotion/styled'
 import { observer } from 'mobx-react'
 import Tag from './Tag'
+import type { ItemType } from '@/types/item'
 
 interface ItemProps {
   item: ItemType
@@ -57,7 +57,7 @@ const ItemInfo = styled.div`
   flex-grow: 1;
 `
 
-const ItemTitle = styled.p`
+const ItemTitle = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;

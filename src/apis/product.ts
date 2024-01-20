@@ -1,11 +1,11 @@
-import { ItemType } from '@/types/item'
 import customAxios from '.'
+import type { ItemType } from '@/types/item'
 
-export const getItems = () => {
-  try {
-    return customAxios.get<ItemType[]>('/items')
-  } catch (error) {
-    console.error('Error in getProducts:', error)
-    throw error
-  }
-}
+export const getItems = () =>
+  customAxios
+    .get<ItemType[]>('/items')
+    .then((items) => items.data)
+    .catch((error) => {
+      console.error('Error in getProducts:', error)
+      throw error
+    })
