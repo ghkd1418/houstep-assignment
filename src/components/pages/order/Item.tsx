@@ -19,7 +19,7 @@ function Item({ item }: ItemProps) {
       <ItemInfo>
         <ItemTitle>
           <Name>{item.name}</Name>
-          {!!item.event && <Tag name='이벤트' />}
+          {!!item.event && <Tag>이벤트</Tag>}
         </ItemTitle>
         <ItemContent>
           <Counter>

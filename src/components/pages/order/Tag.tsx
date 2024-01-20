@@ -2,11 +2,11 @@ import { colors } from '@/styles/colors'
 import styled from '@emotion/styled'
 
 interface TagProps {
-  name: string
+  children: string
 }
 
-export default function Tag({ name }: TagProps) {
-  return <Container>{name}</Container>
+export default function Tag({ children }: TagProps) {
+  return <Container>{children}</Container>
 }
 
 const Container = styled.div`
