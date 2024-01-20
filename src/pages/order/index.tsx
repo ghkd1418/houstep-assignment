@@ -9,10 +9,19 @@ import { observer } from 'mobx-react'
 import { formatNumberWithCommas } from '@/utils/addCommasToNumber'
 import Spacing from '@/layouts/Spacing'
 import { useGetItems } from '@/hooks/fetch/useFetchItems'
+import { useRouter } from 'next/router'
 
 function Order() {
   const { data: items, isLoading, isError, refetch } = useGetItems()
   const { getTotalQuantities, getTotalPrices } = orderStore
+  const router = useRouter()
+
+  const handleNavigateRandomly = () => {
+    const randomIndex = Math.round(Math.random())
+    const routes = ['/complete', '/error']
+
+    router.push(routes[randomIndex])
+  }
 
   return (
     <>
@@ -47,7 +56,10 @@ function Order() {
             <Spacing size={5} />
             <p>총 가격 : {formatNumberWithCommas(getTotalPrices())}개</p>
           </Total>
-          <OrderButton disabled={getTotalQuantities() === 0 || isLoading}>
+          <OrderButton
+            onClick={handleNavigateRandomly}
+            disabled={getTotalQuantities() === 0 || isLoading}
+          >
             주문하기
           </OrderButton>
         </Cart>
