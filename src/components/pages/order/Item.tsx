@@ -14,7 +14,7 @@ function Item({ item }: ItemProps) {
   const { getItemQuantity, increase, decrease } = orderStore
 
   return (
-    <Container>
+    <Container selected={getItemQuantity(item.id) > 0}>
       <DefaultImage />
       <ItemInfo>
         <ItemTitle>
@@ -34,13 +34,14 @@ function Item({ item }: ItemProps) {
   )
 }
 
-const Container = styled.li`
+const Container = styled.li<{ selected?: boolean }>`
   display: flex;
   gap: 8px;
   padding: 9px 12px;
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.3);
-  background: ${colors.white};
+
+  background-color: ${(props) => (props.selected ? '#F75A2F1A' : colors.white)};
 `
 
 const DefaultImage = styled.div`
