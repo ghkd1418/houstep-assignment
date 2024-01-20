@@ -41,7 +41,9 @@ function Order() {
             <Spacing size={5} />
             <p>총 가격 : {formatNumberWithCommas(getTotalPrices())}개</p>
           </Total>
-          <OrderButton>주문하기</OrderButton>
+          <OrderButton disabled={getTotalQuantities() === 0}>
+            주문하기
+          </OrderButton>
         </Cart>
       </Container>
     </>
