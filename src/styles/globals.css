@@ -1,5 +1,9 @@
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 
+body {
+  background: gainsboro;
+}
+
 html {
   font-family: 'Spoqa Han Sans Neo';
 }
@@ -139,4 +143,8 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+button {
+  cursor: pointer;
 }

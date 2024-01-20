@@ -5,10 +5,10 @@ import CustomHead from '@/components/common/CustomHead'
 import Spacing from '@/layouts/Spacing'
 import Link from 'next/link'
 
-export default function Home() {
+export default function Custom404() {
   return (
     <>
-      <CustomHead title={'홈'} />
+      <CustomHead title={'Not Found'} />
       <Container>
         <Image
           src={'/icons/logo-black-large.svg'}
@@ -17,8 +17,10 @@ export default function Home() {
           height={51}
           priority
         />
+        <Spacing size={21} />
+        <p>페이지를 찾을 수 없습니다.</p>
         <Spacing size={41} />
-        <StyledLink href='/order'>주문하러 가기</StyledLink>
+        <StyledLink href='/'>홈으로 가기</StyledLink>
       </Container>
     </>
   )
@@ -32,6 +34,12 @@ const Container = styled.main`
   height: 100vh;
   flex-direction: column;
   background-color: ${colors.black};
+
+  p {
+    font-size: 18px;
+    text-align: center;
+    color: ${colors.white};
+  }
 `
 
 const StyledLink = styled(Link)`
